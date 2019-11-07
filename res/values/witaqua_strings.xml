@@ -11,4 +11,8 @@
     <!-- Use as Screenshot key combo -->
     <string name="gesture_prevent_ringing_screenshot_switch_title">Use as Screenshot instead ringer mode</string>
     <string name="gesture_prevent_ringing_screenshot_switch_summary">You cannot use gesture as ringer mode switch when use this option</string>
+
+    <!-- Three-fingers-swipe to screenshot -->
+    <string name="three_finger_gesture">Swipe to screenshot</string>
+    <string name="three_finger_gesture_summary">Swipe down with three fingers to take a screenshot</string>
 </resources>
