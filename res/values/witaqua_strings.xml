@@ -125,5 +125,9 @@
     <!-- Circle to search -->
     <string name="search_all_entrypoints_enabled_title">Circle to Search</string>
     <string name="search_all_entrypoints_enabled_summary">Use CTS instead of Google Lens for navbar long press</string>
+
+    <!-- Hide developer status -->
+    <string name="hide_developer_status_title">Hide developer status</string>
+    <string name="hide_developer_status_summary">Hide developer status from apps</string>
 </resources>
 
