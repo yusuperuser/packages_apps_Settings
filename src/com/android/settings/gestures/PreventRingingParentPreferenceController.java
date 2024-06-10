@@ -103,6 +103,9 @@ public class PreventRingingParentPreferenceController extends TogglePreferenceCo
                 case VOLUME_HUSH_MUTE:
                     summary = mContext.getText(R.string.prevent_ringing_option_mute_summary);
                     break;
+                case VOLUME_HUSH_CYCLE:
+                    summary = mContext.getText(R.string.prevent_ringing_option_cycle_summary);
+                    break;
                 // VOLUME_HUSH_OFF
                 default:
                     summary = mContext.getText(R.string.switch_off_text);
