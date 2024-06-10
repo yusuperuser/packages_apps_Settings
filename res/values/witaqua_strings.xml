@@ -7,4 +7,8 @@
     <!-- Cycle through ringer modes gesture -->
     <string name="prevent_ringing_option_cycle">Cycle through modes</string>
     <string name="prevent_ringing_option_cycle_summary">On (cycle through modes)</string>
+
+    <!-- Use as Screenshot key combo -->
+    <string name="gesture_prevent_ringing_screenshot_switch_title">Use as Screenshot instead ringer mode</string>
+    <string name="gesture_prevent_ringing_screenshot_switch_summary">You cannot use gesture as ringer mode switch when use this option</string>
 </resources>

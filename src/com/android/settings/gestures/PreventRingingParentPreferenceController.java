@@ -94,6 +94,8 @@ public class PreventRingingParentPreferenceController extends TogglePreferenceCo
         super.updateState(preference);
         final int value = Settings.Secure.getInt(
                 mContext.getContentResolver(), SECURE_KEY, VOLUME_HUSH_VIBRATE);
+        final boolean isUseAsScreenShotEnabled = Settings.Secure.getInt(
+                mContext.getContentResolver(), Settings.Secure.VOLUME_HUSH_GESTURE_AS_SCREENSHOT, 0) != 0;
         CharSequence summary;
         if (isVolumePowerKeyChordSetToHush()) {
             switch (value) {
@@ -110,6 +112,7 @@ public class PreventRingingParentPreferenceController extends TogglePreferenceCo
                 default:
                     summary = mContext.getText(R.string.switch_off_text);
             }
+            if (isUseAsScreenShotEnabled) summary = mContext.getText(R.string.gesture_prevent_ringing_screenshot_switch_title);
             preference.setEnabled(true);
             mPreference.setSwitchEnabled(true);
         } else {

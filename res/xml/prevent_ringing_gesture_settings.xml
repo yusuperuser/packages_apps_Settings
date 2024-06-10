@@ -32,4 +32,15 @@
     <PreferenceCategory
         android:key="gesture_prevent_ringing_category"
         android:title="@string/gesture_prevent_ringing_title" />
+
+    <PreferenceCategory
+        android:key="gesture_prevent_ringing_category_other"
+        android:title="@string/keyboard_extras_title">
+
+        <SwitchPreference
+            android:key="gesture_prevent_ringing_screenshot_switch"
+            android:title="@string/gesture_prevent_ringing_screenshot_switch_title"
+            android:summary="@string/gesture_prevent_ringing_screenshot_switch_summary" />
+
+    </PreferenceCategory>
 </PreferenceScreen>

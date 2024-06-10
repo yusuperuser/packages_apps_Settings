@@ -26,6 +26,7 @@ import android.provider.Settings;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.settings.R;
@@ -49,6 +50,8 @@ public class PreventRingingGesturePreferenceController extends AbstractPreferenc
 
     static final String KEY_CYCLE = "prevent_ringing_option_cycle";
 
+    private final String KEY_USE_AS_SCREENSHOT = "gesture_prevent_ringing_screenshot_switch";
+
     private final String PREF_KEY_VIDEO = "gesture_prevent_ringing_video";
     private final String KEY = "gesture_prevent_ringing_category";
     private final Context mContext;
@@ -60,6 +63,8 @@ public class PreventRingingGesturePreferenceController extends AbstractPreferenc
     @VisibleForTesting
     SelectorWithWidgetPreference mMutePref;
     SelectorWithWidgetPreference mCyclePref;
+
+    SwitchPreference mUseAsScreenShotPref;
 
     private SettingObserver mSettingObserver;
 
@@ -90,6 +95,22 @@ public class PreventRingingGesturePreferenceController extends AbstractPreferenc
         if (mPreferenceCategory != null) {
             mSettingObserver = new SettingObserver(mPreferenceCategory);
         }
+
+        // Use as Screenshot key combo
+        SwitchPreference mUseAsScreenShotPref = screen.findPreference(KEY_USE_AS_SCREENSHOT);
+        mUseAsScreenShotPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                boolean enabled = (Boolean) newValue;
+                Settings.Secure.putInt(mContext.getContentResolver(),
+                        Settings.Secure.VOLUME_HUSH_GESTURE_AS_SCREENSHOT, enabled ? 1 : 0);
+                updateState(preference);
+                return true;
+            }
+        });
+        boolean isUseAsScreenShotEnabled = Settings.Secure.getInt(mContext.getContentResolver(),
+                Settings.Secure.VOLUME_HUSH_GESTURE_AS_SCREENSHOT, 0) != 0;
+        mUseAsScreenShotPref.setChecked(isUseAsScreenShotEnabled);
     }
 
     @Override
@@ -121,6 +142,10 @@ public class PreventRingingGesturePreferenceController extends AbstractPreferenc
     public void updateState(Preference preference) {
         int preventRingingSetting = Settings.Secure.getInt(mContext.getContentResolver(),
                 Settings.Secure.VOLUME_HUSH_GESTURE, Settings.Secure.VOLUME_HUSH_VIBRATE);
+
+        boolean isUseAsScreenShotEnabled = Settings.Secure.getInt(mContext.getContentResolver(),
+                Settings.Secure.VOLUME_HUSH_GESTURE_AS_SCREENSHOT, 0) != 0;
+
         final boolean isVibrate = preventRingingSetting == Settings.Secure.VOLUME_HUSH_VIBRATE;
         final boolean isMute = preventRingingSetting == Settings.Secure.VOLUME_HUSH_MUTE;
         final boolean isCycle = preventRingingSetting == Settings.Secure.VOLUME_HUSH_CYCLE;
@@ -134,7 +159,7 @@ public class PreventRingingGesturePreferenceController extends AbstractPreferenc
             mCyclePref.setChecked(isCycle);
         }
 
-        if (preventRingingSetting == Settings.Secure.VOLUME_HUSH_OFF) {
+        if (preventRingingSetting == Settings.Secure.VOLUME_HUSH_OFF || isUseAsScreenShotEnabled) {
             mVibratePref.setEnabled(false);
             mMutePref.setEnabled(false);
             if (mCyclePref != null) {
@@ -190,6 +215,8 @@ public class PreventRingingGesturePreferenceController extends AbstractPreferenc
     private class SettingObserver extends ContentObserver {
         private final Uri VOLUME_HUSH_GESTURE = Settings.Secure.getUriFor(
                 Settings.Secure.VOLUME_HUSH_GESTURE);
+        private final Uri VOLUME_HUSH_GESTURE_AS_SCREENSHOT = Settings.Secure.getUriFor(
+                Settings.Secure.VOLUME_HUSH_GESTURE_AS_SCREENSHOT);
 
         private final Preference mPreference;
 
