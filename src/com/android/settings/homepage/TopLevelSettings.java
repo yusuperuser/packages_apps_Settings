@@ -213,6 +213,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         super.onCreatePreferences(savedInstanceState, rootKey);
         if (Flags.homepageRevamp()) {
+            updatePreferenceCategoryLayout();
             return;
         }
         int tintColor = Utils.getHomepageIconColor(getContext());
@@ -222,6 +223,17 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                 icon.setTint(tintColor);
             }
         });
+    }
+
+    private void updatePreferenceCategoryLayout() {
+        final PreferenceScreen screen = getPreferenceScreen();
+        final int count = screen.getPreferenceCount();
+        for (int i = 0; i < count; i++) {
+            final Preference preference = screen.getPreference(i);
+            if (preference instanceof PreferenceCategory) {
+                preference.setLayoutResource(com.android.settingslib.widget.theme.R.layout.settingslib_preference_category_no_title);
+            }
+        }
     }
 
     @Override
