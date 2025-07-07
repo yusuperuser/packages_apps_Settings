@@ -58,7 +58,7 @@
 
         <com.android.settings.widget.HomepagePreference
             android:fragment="tokyo.witaqua.settings.WitAquaSettings"
-            android:icon="@drawable/ic_settings_witaqua"
+            android:icon="@drawable/ic_homepage_witaqua"
             android:key="top_level_witaqua"
             android:order="-70"
             android:title="@string/witaqua_dashboard_title"
