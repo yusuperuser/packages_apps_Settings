@@ -5717,5 +5717,69 @@
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
                        android:value="true" />
         </activity>
+        <!-- Themes Settings -->
+        <activity android:name="Settings$WitAquaMagicThemesActivity"
+                  android:label="@string/themes_title"
+                  android:icon="@drawable/ic_themes"
+                  android:exported="true">
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                       android:value="tokyo.witaqua.settings.fragments.themes.Themes" />
+        </activity>
+        <!-- Lockscreen Settings -->
+        <activity android:name="Settings$WitAquaMagicLockscreenActivity"
+                  android:label="@string/lock_screen_title"
+                  android:icon="@drawable/ic_lock_screen"
+                  android:exported="true">
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                       android:value="tokyo.witaqua.settings.fragments.lockscreen.LockScreen" />
+        </activity>
+        <!-- Power Menu Settings -->
+        <activity android:name="Settings$WitAquaMagicPowerMenuActivity"
+                  android:label="@string/power_menu_title"
+                  android:icon="@drawable/ic_power_menu"
+                  android:exported="true">
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                       android:value="tokyo.witaqua.settings.fragments.powermenu.PowerMenu" />
+        </activity>
+        <!-- StatusBar Settings -->
+        <activity android:name="Settings$WitAquaMagicStatusBarActivity"
+                  android:label="@string/status_bar_title"
+                  android:icon="@drawable/ic_status_bar"
+                  android:exported="true">
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                       android:value="tokyo.witaqua.settings.fragments.statusbar.StatusBar" />
+        </activity>
+        <!-- QuickSettings Settings -->
+        <activity android:name="Settings$WitAquaMagicQuickSettingsActivity"
+                  android:label="@string/quick_settings_title"
+                  android:icon="@drawable/ic_quick_settings"
+                  android:exported="true">
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                       android:value="tokyo.witaqua.settings.fragments.quicksettings.QuickSettings" />
+        </activity>
+        <!-- Notifications Settings -->
+        <activity android:name="Settings$WitAquaMagicNotificationsActivity"
+                  android:label="@string/notifications_title"
+                  android:icon="@drawable/ic_notifications"
+                  android:exported="true">
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                       android:value="tokyo.witaqua.settings.fragments.notifications.Notifications" />
+        </activity>
+        <!-- Miscellaneous Settings -->
+        <activity android:name="Settings$WitAquaMagicMiscellaneousActivity"
+                  android:label="@string/miscellaneous_title"
+                  android:icon="@drawable/ic_miscellaneous"
+                  android:exported="true">
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                       android:value="tokyo.witaqua.settings.fragments.miscellaneous.Miscellaneous" />
+        </activity>
+        <!-- About -->
+        <activity android:name="Settings$WitAquaMagicAboutActivity"
+                  android:label="@string/about_title"
+                  android:icon="@drawable/ic_about"
+                  android:exported="true">
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                       android:value="tokyo.witaqua.settings.fragments.about.About" />
+        </activity>
     </application>
 </manifest>

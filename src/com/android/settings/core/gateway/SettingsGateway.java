@@ -218,6 +218,14 @@ import com.android.settings.wifi.savedaccesspoints2.SavedAccessPointsWifiSetting
 import com.android.settings.wifi.tether.WifiTetherSettings;
 
 import tokyo.witaqua.settings.WitAquaSettings;
+import tokyo.witaqua.settings.fragments.about.About;
+import tokyo.witaqua.settings.fragments.lockscreen.LockScreen;
+import tokyo.witaqua.settings.fragments.miscellaneous.Miscellaneous;
+import tokyo.witaqua.settings.fragments.powermenu.PowerMenu;
+import tokyo.witaqua.settings.fragments.quicksettings.QuickSettings;
+import tokyo.witaqua.settings.fragments.statusbar.StatusBar;
+import tokyo.witaqua.settings.fragments.themes.Themes;
+import tokyo.witaqua.settings.fragments.notifications.Notifications;
 
 public class SettingsGateway {
 
@@ -425,6 +433,14 @@ public class SettingsGateway {
             ToggleScreenMagnificationPreferenceFragment.class.getName(),
             FlashNotificationsPreferenceFragment.class.getName(),
             WitAquaSettings.class.getName(),
+            LockScreen.class.getName(),
+            PowerMenu.class.getName(),
+            StatusBar.class.getName(),
+            QuickSettings.class.getName(),
+            Notifications.class.getName(),
+            Miscellaneous.class.getName(),
+            Themes.class.getName(),
+            About.class.getName()
     };
 
     public static final String[] SETTINGS_FOR_RESTRICTED = {
@@ -472,5 +488,13 @@ public class SettingsGateway {
             Settings.MemtagPageActivity.class.getName(),
             Settings.NavigationModeSettingsActivity.class.getName(),
             Settings.WitAquaSettingsActivity.class.getName(),
+            Settings.WitAquaMagicThemesActivity.class.getName(),
+            Settings.WitAquaMagicLockscreenActivity.class.getName(),
+            Settings.WitAquaMagicPowerMenuActivity.class.getName(),
+            Settings.WitAquaMagicStatusBarActivity.class.getName(),
+            Settings.WitAquaMagicQuickSettingsActivity.class.getName(),
+            Settings.WitAquaMagicNotificationsActivity.class.getName(),
+            Settings.WitAquaMagicMiscellaneousActivity.class.getName(),
+            Settings.WitAquaMagicAboutActivity.class.getName()
     };
 }

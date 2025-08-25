@@ -540,4 +540,12 @@ public class Settings extends SettingsActivity {
     public static class FlashNotificationsActivity extends SettingsActivity { /* empty */ }
 
     public static class WitAquaSettingsActivity extends SettingsActivity {}
+    public static class WitAquaMagicThemesActivity extends SettingsActivity {}
+    public static class WitAquaMagicLockscreenActivity extends SettingsActivity {}
+    public static class WitAquaMagicPowerMenuActivity extends SettingsActivity {}
+    public static class WitAquaMagicStatusBarActivity extends SettingsActivity {}
+    public static class WitAquaMagicQuickSettingsActivity extends SettingsActivity {}
+    public static class WitAquaMagicNotificationsActivity extends SettingsActivity {}
+    public static class WitAquaMagicMiscellaneousActivity extends SettingsActivity {}
+    public static class WitAquaMagicAboutActivity extends SettingsActivity {}
 }
