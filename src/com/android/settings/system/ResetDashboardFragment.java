@@ -28,6 +28,7 @@ import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.network.EraseEuiccDataController;
 import com.android.settings.network.NetworkResetPreferenceController;
 import com.android.settings.network.SubscriptionUtil;
+import com.android.settings.nfc.FelicaResetPreferenceController;
 import com.android.settings.privatespace.delete.ResetOptionsDeletePrivateSpaceController;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.core.AbstractPreferenceController;
@@ -83,6 +84,7 @@ public class ResetDashboardFragment extends DashboardFragment {
         if (factoryResetPreferenceController != null) {
             factoryResetPreferenceController.setFragment(this);
         }
+        use(FelicaResetPreferenceController.class).setFragment(this);
     }
 
     @Override
