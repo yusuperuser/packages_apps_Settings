@@ -26,7 +26,7 @@
     <!-- AdGuard DNS Option -->
     <string name="private_dns_mode_adguard" translatable="false">AdGuard DNS</string>
     <!-- AdGuard DNS hostname -->
-    <string name="private_dns_hostname_adguard" translatable="false">dns.adguard.com</string>
+    <string name="private_dns_hostname_adguard" translatable="false">dns.adguard-dns.com</string>
 
     <!-- Open DNS Option -->
     <string name="private_dns_mode_open_dns" translatable="false">Open DNS</string>
