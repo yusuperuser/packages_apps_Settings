@@ -263,5 +263,4 @@
             settings:highlightableMenuKey="@string/menu_key_support"
             settings:controller="com.android.settings.support.SupportPreferenceController"/>
     </PreferenceCategory>
-
 </PreferenceScreen>

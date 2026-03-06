@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2026 WitAqua
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+
+    <color name="ic_device_name_storage_center_color">@android:color/system_accent1_900</color>
+    <color name="ic_device_name_storage_outer_color">@android:color/system_accent1_200</color>
+    <color name="ic_device_name_storage_rectangle_color">@android:color/system_accent3_200</color>
+</resources>

@@ -260,4 +260,3 @@
             settings:controller="com.android.settings.support.SupportPreferenceController"/>
     </com.android.settingslib.widget.UntitledPreferenceCategory>
 </PreferenceScreen>
-

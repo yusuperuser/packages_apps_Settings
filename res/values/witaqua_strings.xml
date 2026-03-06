@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2026 WitAqua
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- WitAqua Banner -->
+    <string name="card_device_name">Device name</string>
+    <string name="card_storage">Storage</string>
+    <string name="card_maintainer">ROM Maintainer</string>
+    <string name="card_processor">Processor</string>
+    <string name="card_ram">RAM</string>
+    <string name="card_camera">Camera</string>
+    <string name="card_battery">Battery</string>
+    <string name="card_display">Display</string>
+    <string name="edit_device_name_title">Edit Device Name</string>
+    <string name="maintainer_name" translatable="false"></string>
+    <string name="ok">OK</string>
+</resources>
