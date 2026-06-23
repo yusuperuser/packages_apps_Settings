@@ -17,6 +17,7 @@
 package tokyo.witaqua.settings
 
 import android.content.Context
+import android.content.Intent
 import android.os.storage.StorageManager
 import android.provider.Settings
 import android.text.InputType
@@ -75,6 +76,11 @@ class BannerPreferenceController(context: Context) : AbstractPreferenceControlle
 
         bannerPreference.findViewById<android.view.View>(R.id.device_name_card)?.setOnClickListener {
             showEditDeviceNameDialog(deviceNameText)
+        }
+
+        bannerPreference.findViewById<android.view.View>(R.id.storage_card)?.setOnClickListener {
+            val intent = Intent(Settings.ACTION_INTERNAL_STORAGE_SETTINGS)
+            mContext.startActivity(intent)
         }
     }
 

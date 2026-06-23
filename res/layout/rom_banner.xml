@@ -113,6 +113,7 @@
             app:cardBackgroundColor="@color/settingslib_preference_bg_color">
 
             <LinearLayout
+                android:id="@+id/storage_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
