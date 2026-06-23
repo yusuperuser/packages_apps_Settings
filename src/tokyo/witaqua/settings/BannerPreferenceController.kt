@@ -21,6 +21,7 @@ import android.os.storage.StorageManager
 import android.provider.Settings
 import android.text.InputType
 import android.widget.EditText
+import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.preference.PreferenceScreen
@@ -104,10 +105,20 @@ class BannerPreferenceController(context: Context) : AbstractPreferenceControlle
                 inputType = InputType.TYPE_CLASS_TEXT
                 setText(getDeviceName())
             }
+        val container = FrameLayout(mContext)
+        val margin = (24 * mContext.resources.displayMetrics.density).toInt()
+        val params = FrameLayout.LayoutParams(
+            FrameLayout.LayoutParams.MATCH_PARENT,
+            FrameLayout.LayoutParams.WRAP_CONTENT
+        ).apply {
+            setMargins(margin, 0, margin, 0)
+        }
+        editText.layoutParams = params
+        container.addView(editText)
 
         AlertDialog.Builder(mContext)
             .setTitle(R.string.edit_device_name_title)
-            .setView(editText)
+            .setView(container)
             .setPositiveButton(R.string.ok) { _, _ ->
                 val newName = editText.text.toString().trim()
                 if (newName.isNotEmpty()) {
