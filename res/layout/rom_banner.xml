@@ -19,7 +19,9 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -73,6 +75,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:background="?android:attr/selectableItemBackground"
                 android:padding="16dp">
 
                 <ImageView
@@ -117,7 +120,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="16dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true">
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="40dp"
