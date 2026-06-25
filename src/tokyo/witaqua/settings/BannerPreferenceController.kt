@@ -28,6 +28,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.preference.PreferenceScreen
 import com.airbnb.lottie.LottieAnimationView
 import com.android.settings.R
+import com.android.settings.system.SystemUpdateRepository
 import com.android.settingslib.core.AbstractPreferenceController
 import com.android.settingslib.deviceinfo.PrivateStorageInfo
 import com.android.settingslib.deviceinfo.StorageManagerVolumeProvider
@@ -72,6 +73,14 @@ class BannerPreferenceController(context: Context) : AbstractPreferenceControlle
         if (totalBytes > 0) {
             val storagePercentage = (usedBytes.toDouble() / totalBytes.toDouble()) * 100
             updateWaveTranslation(waveView, storagePercentage)
+        }
+
+        bannerPreference.findViewById<android.view.View>(R.id.banner_layout)?.setOnClickListener {
+            val systemUpdateRepository = SystemUpdateRepository(mContext)
+            val intent = systemUpdateRepository.getSystemUpdateIntent()
+            if (intent != null) {
+                mContext.startActivity(intent)
+            }
         }
 
         bannerPreference.findViewById<android.view.View>(R.id.device_name_card)?.setOnClickListener {

@@ -18,6 +18,7 @@
         app:strokeWidth="0dp">
 
         <FrameLayout
+            android:id="@+id/banner_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:foreground="?android:attr/selectableItemBackground"
