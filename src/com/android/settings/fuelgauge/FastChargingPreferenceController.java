@@ -17,7 +17,6 @@
 package com.android.settings.fuelgauge;
 
 import android.content.Context;
-import android.os.RemoteException;
 import android.util.Log;
 
 import androidx.preference.Preference;
@@ -25,9 +24,11 @@ import androidx.preference.SwitchPreferenceCompat;
 
 import com.android.settings.core.BasePreferenceController;
 
-import vendor.lineage.fastcharge.V1_0.IFastCharge;
-
-import java.util.NoSuchElementException;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * Controller to change and update the fast charging toggle
@@ -37,48 +38,47 @@ public class FastChargingPreferenceController extends BasePreferenceController
 
     private static final String KEY_FAST_CHARGING = "fast_charging";
     private static final String TAG = "FastChargingPreferenceController";
-
-    private IFastCharge mFastCharge = null;
+    private static final String FILE_RESTRICT_CHG = "/sys/class/qcom-battery/restrict_chg";
 
     public FastChargingPreferenceController(Context context) {
         super(context, KEY_FAST_CHARGING);
-        try {
-            mFastCharge = IFastCharge.getService();
-        } catch (NoSuchElementException | RemoteException e) {
-            Log.e(TAG, "Failed to get IFastCharge interface", e);
-        }
     }
 
     @Override
     public int getAvailabilityStatus() {
-        return mFastCharge != null ? AVAILABLE : UNSUPPORTED_ON_DEVICE;
+        return new File(FILE_RESTRICT_CHG).exists() ? AVAILABLE : UNSUPPORTED_ON_DEVICE;
     }
 
     @Override
     public void updateState(Preference preference) {
         super.updateState(preference);
-        boolean fastChargingEnabled = false;
-
-        try {
-            fastChargingEnabled = mFastCharge.isEnabled();
-        } catch (RemoteException e) {
-            Log.e(TAG, "isEnabled failed", e);
-        }
-
-        ((SwitchPreferenceCompat) preference).setChecked(fastChargingEnabled);
+        ((SwitchPreferenceCompat) preference).setChecked(isFastChargingEnabled());
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         final boolean shouldEnableFastCharging = (Boolean) newValue;
-
-        try {
-            mFastCharge.setEnabled(shouldEnableFastCharging);
-            updateState(preference);
-        } catch (RemoteException e) {
-            Log.e(TAG, "setEnabled failed", e);
-        }
-
+        writeValue(shouldEnableFastCharging ? "0" : "1");
+        updateState(preference);
         return false;
+    }
+
+    private boolean isFastChargingEnabled() {
+        try (BufferedReader br = new BufferedReader(new FileReader(FILE_RESTRICT_CHG))) {
+            String value = br.readLine();
+            // restrict_chg=0 means unrestricted (fast charge ON)
+            return "0".equals(value != null ? value.trim() : null);
+        } catch (IOException e) {
+            Log.e(TAG, "Failed to read restrict_chg", e);
+            return false;
+        }
+    }
+
+    private void writeValue(String value) {
+        try (FileWriter fw = new FileWriter(FILE_RESTRICT_CHG)) {
+            fw.write(value);
+        } catch (IOException e) {
+            Log.e(TAG, "Failed to write restrict_chg", e);
+        }
     }
 }
